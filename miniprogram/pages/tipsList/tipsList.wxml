@@ -1,0 +1,36 @@
+<!--pages/tipsList/tipsList.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <text class="title">技巧贴士</text>
+  </view>
+
+  <!-- 贴士列表 -->
+  <view class="tips-list">
+    <view class="tip-item" wx:for="{{tips}}" wx:key="id" bindtap="navigateToDetail" data-id="{{item.id}}">
+      <view class="tip-content">
+        <view class="tip-icon">{{item.icon}}</view>
+        <view class="tip-info">
+          <text class="tip-title">{{item.title}}</text>
+          <text class="tip-summary">{{item.summary}}</text>
+        </view>
+      </view>
+      <view class="tip-actions">
+        <view class="action-btn collect-btn {{item.isCollected ? 'collected' : ''}}" 
+              catchtap="toggleCollect" 
+              data-id="{{item.id}}" 
+              data-type="tip">
+          <text class="action-icon">{{item.isCollected ? '★' : '☆'}}</text>
+        </view>
+        <view class="action-btn share-btn" 
+              catchtap="shareTip" 
+              data-id="{{item.id}}">
+          <text class="action-icon">📤</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

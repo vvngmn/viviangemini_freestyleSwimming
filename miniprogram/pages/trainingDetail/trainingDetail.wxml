@@ -1,0 +1,93 @@
+<!--pages/trainingDetail/trainingDetail.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <view class="header-actions">
+      <view class="action-btn collect-btn {{isCollected ? 'collected' : ''}}" bindtap="toggleCollect">
+        <text class="action-icon">{{isCollected ? '★' : '☆'}}</text>
+      </view>
+      <view class="action-btn share-btn" bindtap="shareTraining">
+        <text class="action-icon">📤</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="level-info">
+    <text class="level-title">{{levelTitle}}</text>
+    <view class="progress-overview">
+      <text class="progress-text">总体进度: {{progress}}%</text>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <text class="progress-stats">{{completedItems}}/{{totalItems}} 项目已完成</text>
+    </view>
+  </view>
+
+  <view class="training-plans">
+    <block wx:for="{{trainingPlans}}" wx:key="id">
+      <view class="plan-section">
+        <view class="plan-header">
+          <text class="plan-icon">{{item.icon}}</text>
+          <text class="plan-title">{{item.title}}</text>
+        </view>
+
+        <view class="training-items">
+          <block wx:for="{{item.items}}" wx:key="id" wx:for-item="trainingItem">
+            <view class="training-item {{trainingItem.isCompleted ? 'completed' : ''}}">
+              <view class="item-info">
+                <view class="item-header">
+                  <text class="item-title">{{trainingItem.title}}</text>
+                  <view class="item-status">
+                    <text class="session-info">第{{trainingItem.currentSession}}次 / 共{{trainingItem.sessions}}次</text>
+                    <view class="item-progress">
+                      <view class="item-progress-bar">
+                        <view class="item-progress-fill" style="width: {{trainingItem.progress}}%"></view>
+                      </view>
+                      <text class="item-progress-text">{{trainingItem.progress}}%</text>
+                    </view>
+                  </view>
+                </view>
+                
+                <text class="item-description">{{trainingItem.description}}</text>
+
+                <view class="completed-sessions" wx:if="{{trainingItem.completedSessions.length > 0}}">
+                  <text class="sessions-title">已完成记录:</text>
+                  <view class="session-list">
+                    <block wx:for="{{trainingItem.completedSessions}}" wx:key="timestamp" wx:for-item="session">
+                      <view class="session-item">
+                        <text class="session-number">第{{session.session}}次</text>
+                        <text class="session-date">{{session.date}}</text>
+                      </view>
+                    </block>
+                  </view>
+                </view>
+              </view>
+
+              <view class="item-actions">
+                <button 
+                  class="action-btn complete-btn {{trainingItem.isCompleted ? 'completed' : ''}}" 
+                  bindtap="completeTrainingItem" 
+                  data-plan-id="{{item.id}}" 
+                  data-item-id="{{trainingItem.id}}"
+                  disabled="{{trainingItem.isCompleted}}">
+                  <text wx:if="{{trainingItem.isCompleted}}">✅ 已完成</text>
+                  <text wx:else>完成第{{trainingItem.currentSession}}次</text>
+                </button>
+                <button 
+                  class="action-btn undo-btn" 
+                  bindtap="undoLastSession" 
+                  data-plan-id="{{item.id}}" 
+                  data-item-id="{{trainingItem.id}}"
+                  wx:if="{{trainingItem.completedSessions.length > 0}}">
+                  撤销上一次
+                </button>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view> 

@@ -1,0 +1,69 @@
+<!--pages/recordDetail/recordDetail.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <text class="title">记录详情</text>
+    <view class="header-actions">
+      <view class="action-btn collect-btn {{isCollected ? 'collected' : ''}}" bindtap="toggleCollect">
+        <text class="action-icon">{{isCollected ? '★' : '☆'}}</text>
+      </view>
+      <view class="action-btn share-btn" bindtap="shareRecord">
+        <text class="action-icon">📤</text>
+      </view>
+      <view class="action-btn delete-btn" bindtap="deleteRecord">
+        <text class="action-icon">🗑️</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 记录内容 -->
+  <view class="record-content" wx:if="{{record}}">
+    <!-- 显示所有相关记录 -->
+    <view class="records-list">
+      <view class="record-item" wx:for="{{relatedRecords}}" wx:key="id">
+        <view class="record-header">
+          <text class="record-label" wx:if="{{item.isAppend}}">追加记录</text>
+          <text class="record-label" wx:else>原始记录</text>
+          <text class="record-time">{{item.createTime}}</text>
+        </view>
+        <view class="record-text">
+          <text class="record-text-content" bindtap="onContentTap" data-content="{{item.content}}" data-record="{{item}}">{{item.displayContent}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-section" wx:if="{{record}}">
+    <button class="action-button append-button" bindtap="appendRecord">追加记录</button>
+  </view>
+
+  <!-- 追加记录弹窗 -->
+  <view class="modal-overlay" wx:if="{{showAppendModal}}" bindtap="closeAppendModal">
+    <view class="append-modal" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">追加记录</text>
+        <view class="close-btn" bindtap="closeAppendModal">
+          <text class="close-icon">×</text>
+        </view>
+      </view>
+      <view class="modal-content">
+        <textarea 
+          value="{{appendContent}}"
+          bindinput="onAppendInput"
+          placeholder="输入要追加的内容..."
+          maxlength="800"
+          class="append-textarea">
+        </textarea>
+        <view class="char-count">{{appendContent.length}}/800</view>
+      </view>
+      <view class="modal-actions">
+        <button class="modal-btn cancel-btn" bindtap="closeAppendModal">取消</button>
+        <button class="modal-btn save-btn" bindtap="saveAppendContent">保存</button>
+      </view>
+    </view>
+  </view>
+</view> 

@@ -1,0 +1,192 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding: 30rpx 0;
+}
+
+.page-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.page-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.training-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.level-card {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.level-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.15);
+}
+
+.level-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.level-icon {
+  font-size: 50rpx;
+  margin-right: 25rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.level-info {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.level-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.level-subtitle {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.level-progress {
+  text-align: right;
+  min-width: 120rpx;
+}
+
+.progress-text {
+  display: block;
+  font-size: 24rpx;
+  color: #39b54a;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.progress-bar {
+  width: 100rpx;
+  height: 8rpx;
+  background-color: #f0f0f0;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #39b54a;
+  border-radius: 4rpx;
+  transition: width 0.3s;
+}
+
+.level-description {
+  margin-bottom: 25rpx;
+}
+
+.level-description text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.level-stats {
+  display: flex;
+  gap: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #39b54a;
+  margin-bottom: 5rpx;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.level-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15rpx;
+  margin-bottom: 20rpx;
+}
+
+.action-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.action-btn:active {
+  transform: scale(0.9);
+}
+
+.collect-btn {
+  background-color: #f0f0f0;
+}
+
+.collect-btn.collected {
+  background-color: #4CAF50;
+}
+
+.collect-btn.collected .action-icon {
+  color: #fff;
+}
+
+.share-btn {
+  background-color: #f0f0f0;
+}
+
+.action-icon {
+  font-size: 28rpx;
+}
+
+.level-status {
+  text-align: center;
+  padding: 15rpx;
+  background-color: #e8f5e8;
+  border-radius: 10rpx;
+}
+
+.status-complete {
+  font-size: 28rpx;
+  color: #28a745;
+  font-weight: bold;
+} 

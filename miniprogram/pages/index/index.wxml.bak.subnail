@@ -1,0 +1,11 @@
+<view class="container">
+  <block wx:for="{{articles}}" wx:key="id">
+    <view class="article-item" bindtap="navigateToDetail" data-id="{{item.id}}">
+      <image class="thumbnail" src="{{item.thumbnail}}" mode="aspectFill"></image>
+      <view class="article-info">
+        <text class="title">{{item.title}}</text>
+        <!-- 可以根据需要添加摘要或其他信息 -->
+      </view>
+    </view>
+  </block>
+</view>

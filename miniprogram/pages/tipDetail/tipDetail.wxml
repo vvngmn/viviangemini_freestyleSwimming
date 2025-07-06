@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <view class="header-actions">
+      <view class="action-btn collect-btn {{tipDetail.isCollected ? 'collected' : ''}}" bindtap="toggleCollect">
+        <text class="action-icon">{{tipDetail.isCollected ? '★' : '☆'}}</text>
+      </view>
+      <view class="action-btn share-btn" bindtap="shareTip">
+        <text class="action-icon">📤</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{tipDetail}}">
+    <view class="title">{{tipDetail.title}}</view>
+    <view class="content-text">{{tipDetail.content}}</view>
+  </view>
+
+  <view class="loading" wx:else>
+    <text>加载中...</text>
+  </view>
+</view> 

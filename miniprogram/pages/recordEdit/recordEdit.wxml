@@ -1,0 +1,29 @@
+<!--pages/recordEdit/recordEdit.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <text class="title">编辑记录</text>
+    <view class="header-actions">
+      <view class="action-btn save-btn" bindtap="saveEdit">
+        <text class="action-text">保存</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 编辑区域 -->
+  <view class="edit-section">
+    <textarea 
+      value="{{editContent}}"
+      bindinput="onInput"
+      placeholder="编辑记录内容..."
+      maxlength="500"
+      class="edit-textarea">
+    </textarea>
+    <view class="char-count">{{editContent.length}}/500</view>
+  </view>
+
+
+</view> 

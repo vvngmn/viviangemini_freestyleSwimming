@@ -1,0 +1,91 @@
+<view class="container">
+  <!-- 技巧贴士内容块 -->
+  <view class="content-block">
+    <view class="block-header">
+      <text class="block-title">技巧贴士</text>
+    </view>
+    <view class="tips-list">
+      <view class="tip-item" wx:for="{{tips}}" wx:key="id" wx:if="{{index < 3}}" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <view class="tip-content">
+          <view class="tip-icon">{{item.icon}}</view>
+          <view class="tip-info">
+            <text class="tip-title">{{item.title}}</text>
+            <text class="tip-summary">{{item.summary}}</text>
+          </view>
+        </view>
+        <view class="tip-actions">
+          <view class="action-btn collect-btn {{item.isCollected ? 'collected' : ''}}" 
+                catchtap="toggleCollect" 
+                data-id="{{item.id}}" 
+                data-type="tip">
+            <text class="action-icon">{{item.isCollected ? '★' : '☆'}}</text>
+          </view>
+          <view class="action-btn share-btn" 
+                catchtap="shareTip" 
+                data-id="{{item.id}}">
+            <text class="action-icon">📤</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="more-btn" bindtap="navigateToTipsList">
+      <text class="more-text">更多</text>
+    </view>
+  </view>
+
+  <!-- 推荐号内容块 -->
+  <view class="content-block">
+    <view class="block-header">
+      <text class="block-title">推荐号</text>
+    </view>
+    <view class="articles-list">
+      <view class="article-item" bindtap="openArticle" data-url="https://mp.weixin.qq.com/s/JQyJqfJHc6LspFaQOF56TA">
+        <view class="article-content">
+          <text class="article-title">【viviangemini】自由泳弱侧换气全攻略：告别"半面窒息"的游泳体验</text>
+          <text class="article-summary">掌握弱侧换气技巧，让你的自由泳更加流畅自然</text>
+        </view>
+        <view class="article-actions">
+          <view class="action-btn collect-btn {{articles[0].isCollected ? 'collected' : ''}}" catchtap="toggleArticleCollect" data-index="0">
+            <text class="action-icon">{{articles[0].isCollected ? '★' : '☆'}}</text>
+          </view>
+          <view class="action-btn share-btn" catchtap="shareArticle" data-index="0">
+            <text class="action-icon">📤</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 我的记录内容块 -->
+  <view class="content-block">
+    <view class="block-header">
+      <text class="block-title">我的记录</text>
+    </view>
+    <view class="records-list" wx:if="{{records.length > 0}}">
+      <view class="record-item" wx:for="{{records}}" wx:key="id" wx:if="{{index < 3}}">
+        <view class="record-content" bindtap="navigateToRecordDetail" data-id="{{item.id}}">
+          <text class="record-text">{{item.content}}</text>
+          <view class="record-info">
+            <text class="record-time">{{item.createTime}}</text>
+            <text wx:if="{{item.count > 1}}" class="record-count">共{{item.count}}条记录</text>
+          </view>
+        </view>
+        <view class="record-actions">
+          <view class="action-btn collect-btn {{item.isCollected ? 'collected' : ''}}" bindtap="toggleRecordCollect" data-id="{{item.id}}">
+            <text class="action-icon">{{item.isCollected ? '★' : '☆'}}</text>
+          </view>
+          <view class="action-btn share-btn" bindtap="shareRecord" data-id="{{item.id}}">
+            <text class="action-icon">📤</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty-records" wx:else>
+      <text class="empty-text">暂无记录</text>
+    </view>
+    <view class="more-btn" bindtap="navigateToMyRecords">
+      <text class="more-text">更多</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+<!--pages/myRecords/myRecords.wxml-->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <text class="title">我的记录</text>
+    <view class="clear-btn" bindtap="clearAllRecords" wx:if="{{records.length > 0}}">
+      <text class="clear-text">清空</text>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="records-list" wx:if="{{records.length > 0}}">
+          <view class="record-item" wx:for="{{records}}" wx:key="id" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <view class="record-content">
+          <text class="record-text">{{item.content}}</text>
+          <view class="record-info">
+            <text class="record-time">{{item.createTime}}</text>
+            <text wx:if="{{item.count > 1}}" class="record-count">共{{item.count}}条记录</text>
+          </view>
+        </view>
+      <view class="record-actions">
+        <view class="action-btn delete-btn" 
+              catchtap="deleteRecord" 
+              data-id="{{item.id}}">
+          <text class="action-icon">🗑️</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📝</text>
+    <text class="empty-text">暂无记录</text>
+    <text class="empty-desc">去记录页创建你的第一条记录吧</text>
+  </view>
+</view> 

@@ -1,0 +1,50 @@
+<!--pages/collect/collect.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="page-title">我的收藏</text>
+    <text class="page-subtitle">收藏的技巧和训练计划</text>
+  </view>
+
+  <view class="actions" wx:if="{{collectedItems.length > 0}}">
+    <view class="action-btn clear-btn" bindtap="clearAll">
+      <text class="action-text">清空收藏</text>
+    </view>
+    <view class="action-btn share-btn" bindtap="shareCollection">
+      <text class="action-text">分享收藏</text>
+    </view>
+  </view>
+
+  <view class="collected-list" wx:if="{{groupedItems.length > 0}}">
+    <block wx:for="{{groupedItems}}" wx:key="index">
+      <view class="collected-item" bindtap="viewDetail" data-item="{{item}}">
+        <view class="item-icon">{{item.icon || '📝'}}</view>
+        <view class="item-content">
+          <text class="item-title">
+            {{item.title}}
+            <text wx:if="{{item.type === 'record_group' && item.count > 1}}" class="record-count"> ({{item.count}}条记录)</text>
+          </text>
+          <text class="item-subtitle" wx:if="{{item.subtitle}}">{{item.subtitle}}</text>
+          <text class="item-summary" wx:if="{{item.summary}}">{{item.summary}}</text>
+          <text class="item-type">
+            {{item.type === 'tip' ? '技巧贴士' : item.type === 'training' ? '训练计划' : '我的记录'}}
+          </text>
+          <text class="item-time">{{item.collectTime}}</text>
+        </view>
+        <view class="item-actions">
+          <view class="action-btn collect-btn collected" catchtap="removeCollect" data-index="{{index}}">
+            <text class="action-icon">★</text>
+          </view>
+          <view class="action-btn share-btn" catchtap="shareItem" data-item="{{item}}">
+            <text class="action-icon">📤</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📚</text>
+    <text class="empty-title">暂无收藏</text>
+    <text class="empty-subtitle">去推荐页或训练页收藏一些内容吧</text>
+  </view>
+</view>

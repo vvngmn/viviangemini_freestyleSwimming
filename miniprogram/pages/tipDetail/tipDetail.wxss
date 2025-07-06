@@ -1,0 +1,98 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-arrow {
+  font-size: 36rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15rpx;
+}
+
+.action-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.action-btn:active {
+  transform: scale(0.9);
+}
+
+.collect-btn {
+  background-color: #f0f0f0;
+}
+
+.collect-btn.collected {
+  background-color: #4CAF50;
+}
+
+.collect-btn.collected .action-icon {
+  color: #fff;
+}
+
+.share-btn {
+  background-color: #f0f0f0;
+}
+
+.action-icon {
+  font-size: 28rpx;
+}
+
+.content {
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #39b54a;
+  padding-bottom: 20rpx;
+}
+
+.content-text {
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #666;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+.loading {
+  text-align: center;
+  padding: 100rpx;
+  color: #999;
+  font-size: 28rpx;
+} 

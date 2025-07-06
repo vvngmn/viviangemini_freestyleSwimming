@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/dynamic/dynamic",
+    "pages/publish/publish",
+    "pages/collect/collect",
+    "pages/me/me",
+    "pages/tipDetail/tipDetail",
+    "pages/trainingDetail/trainingDetail",
+    "pages/tipsList/tipsList",
+    "pages/myRecords/myRecords",
+    "pages/recordDetail/recordDetail",
+    "pages/recordEdit/recordEdit"
+  ],
+  "window": {
+    "navigationBarTitleText": "自由泳学习",
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#39b54a",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "推荐",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/dynamic/dynamic",
+        "text": "训练",
+        "iconPath": "images/dynamic.png",
+        "selectedIconPath": "images/dynamic-active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "记录",
+        "iconPath": "images/add.png",
+        "selectedIconPath": "images/add-active.png"
+      },
+      {
+        "pagePath": "pages/collect/collect",
+        "text": "收藏",
+        "iconPath": "images/collect.png",
+        "selectedIconPath": "images/collect-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
+      }
+    ]
+  }
+}

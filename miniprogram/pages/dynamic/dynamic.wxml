@@ -1,0 +1,55 @@
+<!--pages/dynamic/dynamic.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="page-title">训练计划</text>
+    <text class="page-subtitle">选择适合你的训练等级，开始你的游泳之旅</text>
+  </view>
+
+  <view class="training-levels">
+    <block wx:for="{{trainingLevels}}" wx:key="id">
+      <view class="level-card" bindtap="navigateToTrainingDetail" data-level="{{item.id}}">
+        <view class="level-header">
+          <view class="level-icon">{{item.icon}}</view>
+          <view class="level-info">
+            <text class="level-title">{{item.title}}</text>
+            <text class="level-subtitle">{{item.subtitle}}</text>
+          </view>
+          <view class="level-progress">
+            <text class="progress-text">{{item.progress}}%</text>
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="level-description">
+          <text>{{item.description}}</text>
+        </view>
+        
+        <view class="level-stats">
+          <view class="stat-item">
+            <text class="stat-number">{{item.completedItems}}</text>
+            <text class="stat-label">已完成</text>
+          </view>
+          <view class="stat-item">
+            <text class="stat-number">{{item.totalItems}}</text>
+            <text class="stat-label">总项目</text>
+          </view>
+        </view>
+
+        <view class="level-actions">
+          <view class="action-btn collect-btn {{item.isCollected ? 'collected' : ''}}" catchtap="toggleCollect" data-id="{{item.id}}" data-type="training">
+            <text class="action-icon">{{item.isCollected ? '★' : '☆'}}</text>
+          </view>
+          <view class="action-btn share-btn" catchtap="shareTraining" data-id="{{item.id}}" data-type="training">
+            <text class="action-icon">📤</text>
+          </view>
+        </view>
+
+        <view class="level-status" wx:if="{{item.progress === 100}}">
+          <text class="status-complete">🎉 训练完成！</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

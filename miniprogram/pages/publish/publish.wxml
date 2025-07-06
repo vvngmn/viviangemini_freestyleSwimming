@@ -1,0 +1,19 @@
+<view class="publish-container">
+  <view class="input-section">
+    <textarea 
+      value="{{content}}"
+      bindinput="onInput"
+      placeholder="分享你的自由泳技巧或输入链接..." 
+      auto-focus
+      maxlength="800"
+      class="content-textarea">
+    </textarea>
+    <view class="char-count">{{content.length}}/800</view>
+  </view>
+  <view style="height: 18px;"></view>
+  <view class="button-section">
+    <button class="save-btn" bindtap="saveRecord">保存</button>
+    <button class="draft-btn" bindtap="saveDraft">草稿</button>
+    <button class="clear-btn" bindtap="clearDraft" wx:if="{{isDraft}}">清空草稿</button>
+  </view>
+</view>
