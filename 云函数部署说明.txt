@@ -1,0 +1,16 @@
+云函数部署说明
+================
+
+云环境ID: prod-2gekgttq8daf0fa6
+云函数名称: messageCloudFunction
+
+部署步骤:
+1. 打开微信开发者工具
+2. 导入项目: C:\Users\hanch\WeChatProjects\miniprogram-2
+3. 在云开发控制台中部署云函数 messageCloudFunction
+4. 确保云环境ID为: prod-2gekgttq8daf0fa6
+
+或者使用命令行工具:
+cloud functions deploy --e prod-2gekgttq8daf0fa6 --n messageCloudFunction --r --project .
+
+部署完成后，客服功能即可正常使用。 
